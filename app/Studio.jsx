@@ -7,7 +7,6 @@ import ImageColorPicker from "./components/ImageColorPicker";
 import MixCalculator from "./components/MixCalculator";
 import MixCalibration from "./components/MixCalibration";
 import { useBrowserScale } from "./components/useBrowserScale";
-import DataTransfer from "./components/DataTransfer";
 import SavedRecipes from "./components/SavedRecipes";
 
 export default function Studio() {
@@ -288,7 +287,6 @@ function selectPaint(index) {
           setTargetColor(saved.targetColor);
           setLoadedRecipe(saved);
         }} />
-        <DataTransfer />
         <MixCalibration
           targetColor={targetColor}
           recipe={currentRecipe}
