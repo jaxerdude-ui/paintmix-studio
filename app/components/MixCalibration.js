@@ -87,8 +87,11 @@ export default function MixCalibration({ targetColor, recipe }) {
       <label className="mt-4 flex items-center gap-3 text-sm">
         <input type="checkbox" checked={physicallyTested} onChange={event => setPhysicallyTested(event.target.checked)} className="h-5 w-5 cursor-pointer" /> Actual test
       </label>
-      <div className="mt-6 space-y-3">
-        <h3 className="text-lg font-semibold">Mixing Test History</h3>
+ <details className="group mt-6">
+       <summary className="flex cursor-pointer list-none items-center justify-between rounded-lg bg-slate-100 p-3 text-lg font-semibold [&::-webkit-details-marker]:hidden">
+  <span>Mixing Test History ({tests.length})</span>
+  <span aria-hidden="true" className="transition-transform group-open:rotate-180">⌄</span>
+</summary>
         {loaded && tests.length === 0 && <p className="text-sm text-slate-500">No mixing tests saved yet. Import a backup or record your first test.</p>}
         {tests.map(test => (
           <div key={test.id} className="rounded-lg border border-slate-200 p-4">
@@ -106,8 +109,8 @@ export default function MixCalibration({ targetColor, recipe }) {
             <p className="mt-2 text-xs text-slate-500">{new Date(test.createdAt).toLocaleString()}</p>
             <button type="button" onClick={() => deleteTest(test.id)} disabled={busy} className="mt-3 text-sm font-medium text-red-600 hover:text-red-800 disabled:opacity-50">Delete Test</button>
           </div>
-        ))}
-      </div>
+         ))}
+      </details>
     </section>
   );
 }
